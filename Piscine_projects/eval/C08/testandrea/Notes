@@ -1,0 +1,3 @@
+x00: OK | ex01: OK | ex02: Does not compile | ex03: OK | ex04: Does not compile | ex05: Does not compile
+
+ex05 a [i] missing on copy putstr. on ex04 can't use -> and .[i] at same time.

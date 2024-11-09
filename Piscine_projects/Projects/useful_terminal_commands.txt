@@ -1,0 +1,12 @@
+Print chineese letter:
+echo "漢" 
+
+Manual for ASCII codes:
+man ascii
+
+Run VSCode:
+flatpak run com.visualstudio.code .
+
+**************************************************
+Show time for ls:
+ls -l --time-style=+"%b %e %H:%M" -A
