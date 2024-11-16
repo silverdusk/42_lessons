@@ -6,7 +6,7 @@
 /*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 21:16:33 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/11/10 21:43:28 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/16 15:22:53 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <string.h>
 
-// ==================== Struct Definitions (if needed) =======================
+// ==================== Struct Definitions =======================
 typedef struct s_list
 {
 	void			*content;

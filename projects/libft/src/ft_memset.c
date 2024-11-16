@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 21:01:10 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/11/16 15:26:17 by kmatskev         ###   ########.fr       */
+/*   Created: 2024/11/16 15:29:19 by kmatskev          #+#    #+#             */
+/*   Updated: 2024/11/16 15:31:36 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(char c)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	return (c > '/' && c < ':' || c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z');
+	size_t i;
+
+	i = 0;
+	while (i < len)
+	{
+		((unsigned char *)b)[i] = c;
+		i++;
+	}
+	return (b);
 }

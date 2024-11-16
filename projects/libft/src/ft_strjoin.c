@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmatskev <kmatskev@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:06:40 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/02/08 12:09:30 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/16 16:00:33 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
 int	ft_strlen(char *str)

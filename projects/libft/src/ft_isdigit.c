@@ -6,9 +6,11 @@
 /*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 20:13:40 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/11/10 20:14:37 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/16 15:59:43 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isdigit(char c)
 {

@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmatskev <kmatskev@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:07:36 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/02/07 12:00:21 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/16 16:00:07 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
 char	*ft_strcpy(char *dest, char *src)

@@ -6,9 +6,11 @@
 /*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 13:02:53 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/11/10 20:44:55 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/16 16:01:10 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {

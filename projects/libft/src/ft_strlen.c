@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmatskev <kmatskev@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 13:02:07 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/01/30 19:01:26 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/16 16:00:58 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_strlen(char *str)
 {

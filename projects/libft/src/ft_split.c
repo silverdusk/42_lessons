@@ -6,13 +6,13 @@
 /*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 12:19:54 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/11/16 14:41:29 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/16 16:00:23 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(const char *str, char c)
+static int	ft_count_words(const char *str, char c)
 {
 	int	i;
 	int	trigger;
