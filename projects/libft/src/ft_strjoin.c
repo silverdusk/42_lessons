@@ -6,88 +6,40 @@
 /*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:06:40 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/11/16 16:00:33 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/18 20:14:01 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 #include <stdlib.h>
 
-int	ft_strlen(char *str)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
+	char	*new_str;
+	size_t	i;
+	size_t	j;
+	size_t	total_len;
 
+	if (!s1 || !s2)
+		return (NULL);
+	total_len = ft_strlen(s1) + ft_strlen(s2);
+	new_str = malloc(total_len + 1);
+	if (!new_str)
+		return (NULL);
 	i = 0;
-	while (str[i] != '\0')
+	while (s1[i] != '\0')
 	{
+		new_str[i] = s1[i];
 		i++;
 	}
-	return (i);
-}
-
-int	ft_strsize(int size, char **strs)
-{
-	int	strsize;
-	int	i;
-
-	strsize = 0;
-	i = 0;
-	while (i < size)
+	j = 0;
+	while (s2[j] != '\0')
 	{
-		strsize += ft_strlen(strs[i]);
-		i++;
+		new_str[i + j] = s2[j];
+		j++;
 	}
-	return (strsize);
-}
-
-int	ft_nearrsize(int size, char **strs, char *sep)
-{
-	int	sepsize;
-	int	strsize;
-
-	sepsize = ft_strlen(sep);
-	strsize = ft_strsize(size, strs);
-	return (strsize + (sepsize * (size - 1)) + 1);
-}
-
-void	ft_appendstr(char *newarr, long *index, char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		newarr[(*index)++] = str[i++];
-	}
-}
-
-char	*ft_strjoin(int size, char **strs, char *sep)
-{
-	char	*empstr;
-	char	*newarr;
-	long	index;
-	int		i;
-
-	if (size == 0)
-	{
-		empstr = (char *)malloc(1);
-		empstr[0] = '\0';
-		return (empstr);
-	}
-	newarr = (char *)malloc((ft_nearrsize(size, strs, sep)) * sizeof(char));
-	index = 0;
-	i = 0;
-	while (i < size)
-	{
-		ft_appendstr(newarr, &index, strs[i]);
-		if (i < size - 1)
-		{
-			ft_appendstr(newarr, &index, sep);
-		}
-		i++;
-	}
-	newarr[index] = '\0';
-	return (newarr);
+	new_str[i + j] = '\0';
+	return (new_str);
 }
 
 // #include <stdio.h>

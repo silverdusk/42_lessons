@@ -6,13 +6,14 @@
 /*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 21:01:10 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/11/16 15:26:17 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/18 19:50:12 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-int	ft_isalnum(char c)
+int	ft_isalnum(int c)
 {
-	return (c > '/' && c < ':' || c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z');
+	return ((c > '/' && c < ':')
+		|| (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }

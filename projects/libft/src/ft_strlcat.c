@@ -6,36 +6,33 @@
 /*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 12:37:57 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/11/16 16:00:40 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/18 22:22:47 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	unsigned int	s_len;
-	unsigned int	d_len;
-	unsigned int	index;
+	size_t	src_len;
+	size_t	dst_len;
+	size_t	i;
 
-	s_len = 0;
-	d_len = 0;
-	index = 0;
-	while (src[s_len] != '\0')
-		s_len++;
-	while (dest[d_len] != '\0')
-		d_len++;
-	if (size <= d_len)
+	src_len = ft_strlen(src);
+	dst_len = 0;
+	while (dst_len < dstsize && dst[dst_len] != '\0')
+		dst_len++;
+	if (dstsize <= dst_len)
+		return (dstsize + src_len);
+	i = 0;
+	while (src[i] != '\0' && (dst_len + i) < (dstsize - 1))
 	{
-		return (s_len + d_len);
+		dst[dst_len + i] = src[i];
+		i++;
 	}
-	while (src[index] != '\0' && index < (size -1))
-	{
-		dest[index] = src[index];
-		index++;
-	}
-	dest[d_len + index] = '\0';
-	return (s_len + d_len);
+	if ((dst_len + i) < dstsize)
+		dst[dst_len + i] = '\0';
+	return (dst_len + src_len);
 }
 
 /*

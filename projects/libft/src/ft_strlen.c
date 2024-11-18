@@ -6,13 +6,13 @@
 /*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 13:02:07 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/11/16 16:00:58 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/18 20:37:10 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-int	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 

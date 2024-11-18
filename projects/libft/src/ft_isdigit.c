@@ -6,13 +6,13 @@
 /*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 20:13:40 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/11/16 15:59:43 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/18 19:50:39 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-int	ft_isdigit(char c)
+int	ft_isdigit(int c)
 {
 	return (c >= '0' && c <= '9');
 }

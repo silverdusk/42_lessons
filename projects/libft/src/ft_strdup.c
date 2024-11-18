@@ -6,14 +6,14 @@
 /*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:07:36 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/11/16 16:00:07 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/18 20:06:45 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 #include <stdlib.h>
 
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strcpy(char *dest, const char *src)
 {
 	int	i;
 
@@ -27,23 +27,13 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
 	char	*newstr;
 
 	newstr = (char *)malloc(ft_strlen(src) + 1);
+	if (!newstr)
+		return (NULL);
 	ft_strcpy(newstr, src);
 	return (newstr);
 }

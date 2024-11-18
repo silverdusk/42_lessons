@@ -6,11 +6,11 @@
 /*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 12:19:54 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/11/16 16:00:23 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/18 19:52:14 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 static int	ft_count_words(const char *str, char c)
 {
@@ -48,13 +48,6 @@ static char	*word_dup(const char *str, int start, int finish)
 	return (word);
 }
 
-static void	free_split(char **split, size_t j)
-{
-	while (j > 0)
-		free(split[--j]);
-	free(split);
-}
-
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
@@ -62,7 +55,7 @@ char	**ft_split(char const *s, char c)
 	int		index;
 	char	**split;
 
-	split = malloc((count_words(s, c) + 1) * sizeof(char *));
+	split = malloc((ft_count_words(s, c) + 1) * sizeof(char *));
 	if (!s || !split)
 		return (NULL);
 	i = 0;
