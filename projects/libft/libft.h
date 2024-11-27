@@ -6,7 +6,7 @@
 /*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 21:16:33 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/11/23 14:12:55 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/27 21:42:04 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,13 @@ void	ft_putnbr_fd(int n, int fd);
 
 // ==================== Linked List Functions (if applicable) ================
 t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
-void	ft_lstdelone(t_list *lst, void (*del)(void*));
-void	ft_lstclear(t_list **lst, void (*del)(void*));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void	ft_lstadd_back(t_list **lst, t_list *new);
+// void	ft_lstdelone(t_list *lst, void (*del)(void*));
+// void	ft_lstclear(t_list **lst, void (*del)(void*));
+// void	ft_lstiter(t_list *lst, void (*f)(void *));
+// t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 #endif

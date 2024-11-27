@@ -6,7 +6,7 @@
 /*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 12:34:52 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/11/23 13:12:23 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/11/23 14:41:50 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	unsigned char		*d;
 	const unsigned char	*s;
 
-	if (!dst || !src)
-		return (NULL);
+	if (n == 0 || dst == src)
+		return (dst);
 	d = (unsigned char *)dst;
 	s = (const unsigned char *)src;
 	i = 0;
@@ -31,3 +31,21 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (dst);
 }
+
+// {
+// 	size_t				i;
+// 	unsigned char		*d;
+// 	const unsigned char	*s;
+
+// 	if (!dst || !src)
+// 		return (NULL);
+// 	d = (unsigned char *)dst;
+// 	s = (const unsigned char *)src;
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		d[i] = s[i];
+// 		i++;
+// 	}
+// 	return (dst);
+// }
