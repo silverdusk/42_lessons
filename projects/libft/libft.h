@@ -6,7 +6,7 @@
 /*   By: kmatskev <kmatskev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 21:16:33 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/12/03 21:34:49 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:54:04 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <limits.h>
 
 // ==================== Struct Definitions =======================
 typedef struct s_list
