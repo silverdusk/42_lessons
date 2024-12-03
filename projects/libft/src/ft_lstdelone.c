@@ -6,7 +6,7 @@
 /*   By: kmatskev <kmatskev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 20:24:12 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/12/03 21:34:49 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/12/03 23:20:22 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-    if (!lst || !del)
-    {
-        return ;
-    }
-    del(lst->content);
-    free(lst);
+	if (!lst || !del)
+	{
+		return ;
+	}
+	del(lst->content);
+	free(lst);
 }
