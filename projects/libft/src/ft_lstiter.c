@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmatskev <kmatskev@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 20:56:03 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/12/03 23:20:59 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/12/04 23:46:16 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	{
 		return ;
 	}
-	while (lst->next != NULL)
+	while (lst != NULL)
 	{
 		f(lst->content);
 		lst = lst->next;
