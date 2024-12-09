@@ -6,7 +6,7 @@
 /*   By: kmatskev <kmatskev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 21:16:33 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/12/03 21:54:04 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:56:45 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <string.h>
 # include <limits.h>
 
-// ==================== Struct Definitions =======================
+// ==================== Definition of linked list structure ==================
 typedef struct s_list
 {
 	void			*content;
@@ -74,7 +74,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-// ==================== Linked List Functions (if applicable) ================
+// ==================== Linked List Functions ================
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
