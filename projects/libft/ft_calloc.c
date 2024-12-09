@@ -6,7 +6,7 @@
 /*   By: kmatskev <kmatskev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 12:59:28 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/12/09 12:07:39 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:41:55 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ void	*ft_calloc(size_t count, size_t size)
 	return (ptr);
 }
 
+/* Probably, make sense to consider ft_memset() instead ft_bzero():
+	ft_bzero(ptr, count * size);
+  It would make code more readable and avoid extra arg "0", 
+  but it will add additional layer of functions. */
 /* #include <stdio.h>
 #include <stdlib.h>
 
