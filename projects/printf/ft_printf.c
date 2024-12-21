@@ -3,14 +3,80 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmatskev <matskevich.ke@gmail.com>         +#+  +:+       +#+        */
+/*   By: kmatskev <kmatskev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:18:05 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/12/17 23:24:26 by kmatskev         ###   ########.fr       */
+/*   Updated: 2024/12/21 17:56:54 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+int	ft_putstr(char *str)
+{
+	unsigned int	len;
+
+	if (!str)
+	{
+		str = "(null)";
+	}
+	len = 0;
+	while (*str)
+	{
+		ft_putchar(*str);
+		str++;
+		len++;
+	}
+	return (len);
+}
+
+int	ft_putnbr(int number)
+{
+	int		len;
+	char	c;
+
+	len = 0;
+	if (number == -2147483648)
+		return (ft_putstr("-2147483648"));
+	if (number < 0)
+	{
+		len += ft_putchar('-');
+		number = -number;
+	}
+	if (number >= 10)
+	{
+		len += ft_putnbr(number / 10);
+	}
+	c = (number % 10) + '0';
+	len += ft_putchar(c);
+	return (len);
+}
+
+int	ft_format_handler(char modifier, va_list args)
+{
+	if (modifier == '%')
+	{
+		return (ft_putchar('%'));
+	}
+	else if (modifier == 'c')
+	{
+		return (ft_putchar(va_arg(args, int)));
+	}
+	else if (modifier == 'd')
+	{
+		return (ft_putnbr(va_arg(args, int)));
+	}
+	else if (modifier == 's')
+	{
+		return (ft_putstr(va_arg(args, char *)));
+	}
+	return (0);
+}
 
 int	ft_printf(const char *format, ...)
 {
@@ -26,12 +92,14 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			len += write(1, format, 1);
+			if (*format)
+			{
+				len += ft_format_handler(*format, args);
+			}
 		}
 		else
 		{
-			write(1, format, 1);
-			len++;
+			len += ft_putchar(*format);
 		}
 		format++;
 	}
@@ -47,11 +115,22 @@ int	main(void)
 	int	pf;
 	int	fp;
 
+	printf("ft_printf_results:\n");
+	ft_printf("Hello %s\n", "world");
+	ft_printf("Character: %c\n", 'A');
+	ft_printf("Percentage: %%\n");
+	printf("\n");
+	printf("printf_results:\n");
+	printf("Hello %s\n", "world");
+	printf("Character: %c\n", 'A');
+	printf("Percentage: %%\n");
+
 	printf("========== Simple Tests ==========\n");
 	printf("Test: c%%de\n");
 	pf = printf("printf output: c%%de\n");
 	fp = ft_printf("ft_printf output: c%%de\n");
 	printf("printf length: %d, ft_printf length: %d\n", pf, fp);
+	return (0);
 }
 
 /*
