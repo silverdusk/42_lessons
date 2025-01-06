@@ -1,6 +1,5 @@
-SRCS = ft_printf.c \
-		ft_init_flags.c
-OBJS = $(SRCS:.c=.o)
+SRC = ft_printf.c ft_helpers.c ft_putptr.c
+OBJS = $(SRC:.c=.o)
 NAME = libftprintf.a
 
 CC = gcc

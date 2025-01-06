@@ -6,7 +6,7 @@
 /*   By: kmatskev <kmatskev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:09:14 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/12/21 16:01:00 by kmatskev         ###   ########.fr       */
+/*   Updated: 2025/01/06 19:28:41 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-// ======================== STRUCTURES ========================
+// ======================== STRUCTURES ================================
 typedef struct s_flags
 {
 	int		minus;
@@ -29,12 +29,25 @@ typedef struct s_flags
 	int		len;
 }				t_flags;
 
-// ======================== FT_PRINTF FUNCTIONS ========================
+typedef struct s_format
+{
+	int		width;
+	int		precision;
+	int		has_precision;
+}				t_format;
+
+// ======================== FT_PRINTF FUNCTIONS =======================
 int		ft_printf(const char *format, ...);
 void	ft_init_flags(t_flags *flags);
 
-int	ft_putchar(char c);
-int	ft_putstr(char *str);
-int	ft_printf(const char *format, ...);
+// ======================== HELPER FUNCTIONS ==========================
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
+int		ft_strlen(const char *str);
+int		ft_putnbr_base(long number, const char *base);
+int		ft_putnbr_base_ull(unsigned long long n, const char *base);
+
+// ======================== HELPER POINTER FUNCTIONS ==========================
+int	ft_putptr(void *ptr);
 
 #endif /* FT_PRINTF_H */

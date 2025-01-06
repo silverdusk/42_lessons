@@ -6,75 +6,33 @@
 /*   By: kmatskev <kmatskev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:18:05 by kmatskev          #+#    #+#             */
-/*   Updated: 2024/12/21 17:56:54 by kmatskev         ###   ########.fr       */
+/*   Updated: 2025/01/06 19:23:23 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
-int	ft_putstr(char *str)
-{
-	unsigned int	len;
-
-	if (!str)
-	{
-		str = "(null)";
-	}
-	len = 0;
-	while (*str)
-	{
-		ft_putchar(*str);
-		str++;
-		len++;
-	}
-	return (len);
-}
-
-int	ft_putnbr(int number)
-{
-	int		len;
-	char	c;
-
-	len = 0;
-	if (number == -2147483648)
-		return (ft_putstr("-2147483648"));
-	if (number < 0)
-	{
-		len += ft_putchar('-');
-		number = -number;
-	}
-	if (number >= 10)
-	{
-		len += ft_putnbr(number / 10);
-	}
-	c = (number % 10) + '0';
-	len += ft_putchar(c);
-	return (len);
-}
-
 int	ft_format_handler(char modifier, va_list args)
 {
-	if (modifier == '%')
-	{
-		return (ft_putchar('%'));
-	}
-	else if (modifier == 'c')
-	{
+	if (modifier == 'c')
 		return (ft_putchar(va_arg(args, int)));
-	}
-	else if (modifier == 'd')
-	{
-		return (ft_putnbr(va_arg(args, int)));
-	}
 	else if (modifier == 's')
-	{
 		return (ft_putstr(va_arg(args, char *)));
-	}
+	else if (modifier == 'p')
+		return (ft_putptr(va_arg(args, void *)));
+	else if (modifier == 'd' || modifier == 'i')
+		return (ft_putnbr_base(va_arg(args, int), "0123456789"));
+	else if (modifier == 'u')
+		return (ft_putnbr_base_ull((unsigned long long)
+				va_arg(args, unsigned int), "0123456789"));
+	else if (modifier == 'x')
+		return (ft_putnbr_base_ull((unsigned long long)
+				va_arg(args, unsigned int), "0123456789abcdef"));
+	else if (modifier == 'X')
+		return (ft_putnbr_base_ull((unsigned long long)
+				va_arg(args, unsigned int), "0123456789ABCDEF"));
+	else if (modifier == '%')
+		return (ft_putchar('%'));
 	return (0);
 }
 
@@ -107,6 +65,37 @@ int	ft_printf(const char *format, ...)
 	return (len);
 }
 
+/* int ft_putnbr_base_ulong(unsigned long n, const char *base)
+{
+	unsigned long	baselen;
+	int				count;
+
+	baselen = ft_strlen(base);
+	if (baselen < 2)
+		return (0);
+	count = 0;
+	if (n >= baselen)
+		count += ft_putnbr_base_ulong(n / baselen, base);
+	count += ft_putchar(base[n % baselen]);
+	return (count);
+}
+
+int ft_putnbr_base_uint(unsigned int n, const char *base)
+{
+	unsigned int baselen;
+	int          count;
+
+	baselen = ft_strlen(base);
+	if (baselen < 2)
+		return (0);
+	count = 0;
+	if (n >= baselen)
+		count += ft_putnbr_base_uint(n / baselen, base);
+	count += ft_putchar(base[n % baselen]);
+	return (count);
+} */
+
+/*
 #include <stdio.h>
 #include "ft_printf.h"
 
@@ -131,7 +120,7 @@ int	main(void)
 	fp = ft_printf("ft_printf output: c%%de\n");
 	printf("printf length: %d, ft_printf length: %d\n", pf, fp);
 	return (0);
-}
+} */
 
 /*
 int	main(void)
@@ -150,3 +139,46 @@ int	main(void)
 	//INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
 	//printf("%d\n", printf("%i%s%l\n", 4535, "HellO", '!'));
 } */
+
+/*
+#include "ft_printf.h"
+#include <stdio.h>
+
+int main(void)
+{
+	int ret1, ret2;
+	int num = 42;
+
+	printf("========== Simple String Tests ==========\n");
+	ret1 = printf("1: Hello, %s!\n", "World");
+	ret2 = ft_printf("1: Hello, %s!\n", "World");
+	printf("printf length: %d, ft_printf length: %d\n\n", ret1, ret2);
+
+	printf("========== Integer Tests ==========\n");
+	ret1 = printf("2: Number: %d\n", 42);
+	ret2 = ft_printf("2: Number: %d\n", 42);
+	printf("printf length: %d, ft_printf length: %d\n\n", ret1, ret2);
+
+	printf("========== Width and Precision Tests ==========\n");
+	ret1 = printf("3: Width and precision: %10.5d\n", 42);
+	ret2 = ft_printf("3: Width and precision: %10.5d\n", 42);
+	printf("printf length: %d, ft_printf length: %d\n\n", ret1, ret2);
+
+	printf("========== Flags Tests ==========\n");
+	ret1 = printf("4: Left justify: %-10d\n", 42);
+	ret2 = ft_printf("4: Left justify: %-10d\n", 42);
+	printf("printf length: %d, ft_printf length: %d\n\n", ret1, ret2);
+
+	printf("========== Hexadecimal Tests ==========\n");
+	ret1 = printf("5: Hex: %#x\n", 255);
+	ret2 = ft_printf("5: Hex: %#x\n", 255);
+	printf("printf length: %d, ft_printf length: %d\n\n", ret1, ret2);
+
+	printf("========== Pointer Tests ==========\n");
+	ret1 = printf("6: Pointer: %p\n", &num);
+	ret2 = ft_printf("6: Pointer: %p\n", &num);
+	printf("printf length: %d, ft_printf length: %d\n\n", ret1, ret2);
+
+	return 0;
+}
+ */
