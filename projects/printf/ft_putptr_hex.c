@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   ft_putptr_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmatskev <kmatskev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:05:40 by kmatskev          #+#    #+#             */
-/*   Updated: 2025/01/06 19:21:30 by kmatskev         ###   ########.fr       */
+/*   Updated: 2025/01/11 14:01:19 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
 #include "ft_printf.h"
 
 static int	ft_puthex_ulong(unsigned long long nbr, int uppercase)
@@ -22,6 +21,10 @@ static int	ft_puthex_ulong(unsigned long long nbr, int uppercase)
 
 	digits_lower = "0123456789abcdef";
 	digits_upper = "0123456789ABCDEF";
+	if (!nbr)
+	{
+		return (ft_putchar('0'));
+	}
 	if (uppercase)
 		digits = digits_upper;
 	else
@@ -37,7 +40,7 @@ static int	ft_puthex_ulong(unsigned long long nbr, int uppercase)
 	return (count);
 }
 
-int	ft_putptr(void *ptr)
+int	ft_putptr_hex(void *ptr)
 {
 	uintptr_t	address;
 	int			count;
@@ -60,3 +63,64 @@ int	ft_putptr(void *ptr)
 ** If ptr == NULL, prints "(nil)".
 ** Otherwise, prints something like "0x7ffee3c5b7c8".
 */
+
+/*
+#include <stdio.h>
+#include "ft_printf.h"
+
+int	main(void)
+{
+	void	*ptr1 = NULL;
+	void	*ptr2 = (void *)0x1234abcd;
+	void	*ptr3 = (void *)0xffffffffffffffff;
+
+	// Test NULL pointer
+	printf("Expected: (nil), Output: ");
+	ft_putptr(ptr1);
+	printf("\n");
+
+	// Test valid pointer
+	printf("Expected: 0x1234abcd, Output: ");
+	ft_putptr(ptr2);
+	printf("\n");
+
+	// Test maximum pointer address
+	printf("Expected: 0xffffffffffffffff, Output: ");
+	ft_putptr(ptr3);
+	printf("\n");
+
+	return (0);
+} */
+
+/*
+#include <stdio.h>
+#include "ft_printf.h"
+
+int	main(void)
+{
+	unsigned long long	n1 = 0;
+	unsigned long long	n2 = 255;
+	unsigned long long	n3 = 4294967295; // UINT_MAX
+	unsigned long long	n4 = 9223372036854775807; // LLONG_MAX
+
+	// Test lowercase hex
+	printf("Expected: 0, Output: ");
+	ft_puthex_ulong(n1, 0);
+	printf("\n");
+
+	printf("Expected: ff, Output: ");
+	ft_puthex_ulong(n2, 0);
+	printf("\n");
+
+	// Test uppercase hex
+	printf("Expected: FFFFFFFF, Output: ");
+	ft_puthex_ulong(n3, 1);
+	printf("\n");
+
+	// Test very large number
+	printf("Expected: 7FFFFFFFFFFFFFFF, Output: ");
+	ft_puthex_ulong(n4, 1);
+	printf("\n");
+
+	return (0);
+} */

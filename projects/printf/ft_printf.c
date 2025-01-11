@@ -6,7 +6,7 @@
 /*   By: kmatskev <kmatskev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:18:05 by kmatskev          #+#    #+#             */
-/*   Updated: 2025/01/06 19:23:23 by kmatskev         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:55:54 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_format_handler(char modifier, va_list args)
 	else if (modifier == 's')
 		return (ft_putstr(va_arg(args, char *)));
 	else if (modifier == 'p')
-		return (ft_putptr(va_arg(args, void *)));
+		return (ft_putptr_hex(va_arg(args, void *)));
 	else if (modifier == 'd' || modifier == 'i')
 		return (ft_putnbr_base(va_arg(args, int), "0123456789"));
 	else if (modifier == 'u')
@@ -65,36 +65,6 @@ int	ft_printf(const char *format, ...)
 	return (len);
 }
 
-/* int ft_putnbr_base_ulong(unsigned long n, const char *base)
-{
-	unsigned long	baselen;
-	int				count;
-
-	baselen = ft_strlen(base);
-	if (baselen < 2)
-		return (0);
-	count = 0;
-	if (n >= baselen)
-		count += ft_putnbr_base_ulong(n / baselen, base);
-	count += ft_putchar(base[n % baselen]);
-	return (count);
-}
-
-int ft_putnbr_base_uint(unsigned int n, const char *base)
-{
-	unsigned int baselen;
-	int          count;
-
-	baselen = ft_strlen(base);
-	if (baselen < 2)
-		return (0);
-	count = 0;
-	if (n >= baselen)
-		count += ft_putnbr_base_uint(n / baselen, base);
-	count += ft_putchar(base[n % baselen]);
-	return (count);
-} */
-
 /*
 #include <stdio.h>
 #include "ft_printf.h"
@@ -116,7 +86,7 @@ int	main(void)
 
 	printf("========== Simple Tests ==========\n");
 	printf("Test: c%%de\n");
-	pf = printf("printf output: c%%de\n");
+	pf = printf("___printf output: c%%de\n");
 	fp = ft_printf("ft_printf output: c%%de\n");
 	printf("printf length: %d, ft_printf length: %d\n", pf, fp);
 	return (0);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helpers.c                                          :+:      :+:    :+:   */
+/*   ft_helpers.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmatskev <kmatskev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 19:23:42 by kmatskev          #+#    #+#             */
-/*   Updated: 2025/01/06 19:24:17 by kmatskev         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:59:46 by kmatskev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,12 @@ int	ft_putchar(char c)
 
 int	ft_putstr(char *str)
 {
-	unsigned int	len;
-
 	if (!str)
-	{
 		str = "(null)";
-	}
-	len = 0;
-	while (*str)
-	{
-		ft_putchar(*str);
-		str++;
-		len++;
-	}
-	return (len);
+	return (write(1, str, ft_strlen(str)));
 }
 
-int	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
